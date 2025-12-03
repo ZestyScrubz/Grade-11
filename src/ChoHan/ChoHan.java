@@ -1,0 +1,144 @@
+package ChoHan;
+/* Isaac Tran
+ * Mr. Campbell
+ * October 19, 2022
+ * A simple game of Cho-Han
+ * The user guesses even or odd, and the computer generates a random nuumber from 1-10
+ */
+import java.util.*; // import all util classes
+public class ChoHan {
+
+	public static void main(String[] args) {
+		// set scanner and random class
+		Scanner input = new Scanner(System.in);
+		Random rand = new Random();
+
+		// set player point
+		int playerPoint = 50;
+
+		// roll dice 1, dice 2, and the total of both rolls
+		int dice1, dice2, answer;
+
+		// win, lost, HAN and CHO count
+		int win = 0, lost = 0, han = 0, cho = 0;
+
+		boolean play = true;
+
+		System.out.print("The Game of Cho-Han\r\n"
+				+ "======================================================\r\n"
+				+ "HOW TO PLAY:\r\n"
+				+ "2 dice are rolled. You must choose whether you think\r\n"
+				+ "the total is even (cho) or odd (han). If you are\r\n"
+				+ "correct, you will win 10 points. If you are incorrect,\r\n"
+				+ "you lose 10 points.\r\n");
+
+		// main game loop
+		while(play) {	
+			// display the rules and prompt the user's choice
+			System.out.print("=======================================================\r\n"
+					+ "You have " + playerPoint + " points\r\n"
+					+ "You swirl the cup and hear the rattle of dice...\r\n"
+					+ "You slam the cup on the floor, still covering the dice.\r\n"
+					+ "CHO (Even) or HAN (Odd): ");
+			String userChoice = input.next();
+
+			// roll dice 1 and 2
+			dice1 = rand.nextInt(6) + 1;
+			dice2 = rand.nextInt(6) + 1;
+
+			// total of both roll
+			answer = dice1 + dice2;
+
+
+			// Check if user chose CHO and check if dice was even or odd			
+			if (userChoice.equalsIgnoreCase("CHO")) {
+				// display the total of the rolls
+				System.out.println("You lift the cup to reveal...");
+				System.out.println(dice1 + " + " + dice2 + " = " + answer);
+				if (answer % 2 == 0) {
+					System.out.println("You win 10 points");
+					playerPoint += 10;
+					win++;
+				} else {
+					System.out.println("You lose 10 points");
+					playerPoint -= 10;
+					lost++;
+				}
+				// count the number of cho
+				cho++;
+			} 
+
+			// Check if user chose HAN  and check if dice was even or odd
+			if (userChoice.equalsIgnoreCase("HAN")) {
+				// display the total of the rolls
+				System.out.println("You lift the cup to reveal...");
+				System.out.println(dice1 + " + " + dice2 + " = " + answer);
+				if (answer % 2 == 0) {
+					System.out.println("You lose 10 points");
+					playerPoint -= 10;
+					lost++;
+
+				} else {
+					System.out.println("You win 10 points");
+					playerPoint += 10;
+					win++;
+				} 
+				// count the number of han
+				han++;
+			} 
+			// if player looses all their points
+			if (playerPoint == 0) {
+				break;
+			}
+
+			// Prompt the user to play again or quit
+			while (true) {
+				System.out.println("******************************************");
+				System.out.print("Would you like to play again? [y]es or [n]o: ");
+				userChoice = input.next();
+				if (userChoice.equals("y")) {
+					play = true;
+					break;
+				} else if (userChoice.equals("n")) {
+					play = false; //The user wants to quit
+					break;
+				} else {
+					System.out.println("******************************************");
+					System.out.println("Invalid chioce - Please choose 'y' or 'n'.");
+
+				}
+			}
+		}
+		// close scanner
+		input.close();
+
+		// total game played
+		double total = win + lost;
+
+		System.out.println("==================================");
+		System.out.println("FINAL STATISTIC");
+		System.out.println("==================================");
+
+		// if player looses all their point
+		if(playerPoint == 0) {
+			System.out.println("You have lost all your points");
+		}
+
+		// display players Statistic
+		System.out.println("Final Score: " + playerPoint);
+		System.out.println("Game Played: " + (int)total);
+		System.out.println("Win: " + ((win/total) * 100)+ "%");
+		System.out.println("Lost: " + ((lost/total)* 100) + "%");
+
+		// display most common move
+		if(cho > han) {
+			System.out.println("Your most common move was: CHO");
+		} else if (cho < han) {
+			System.out.println("Your most common move was: HAN");
+		} else {
+			System.out.println("You play both CHO and HAN equally");
+		}
+		System.out.println("");
+		System.out.println("Thanks for playing Cho-Han");
+	}
+}
