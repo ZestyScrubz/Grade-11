@@ -1,0 +1,180 @@
+package graphics;
+import java.awt.Color;
+import java.awt.Polygon;
+import java.awt.Font;
+import hsa2.GraphicsConsole;
+/* 
+ * Assignment.java
+ * by Isaac
+ * October 31, 2022
+ * A simple drawing that includes a varieties of shapes, colours, and sizes
+ */
+
+public class Assignment {
+	
+	GraphicsConsole gc = new GraphicsConsole(1000, 800);
+
+	public static void main(String[] args) {
+		new Assignment();
+	}
+	
+	Assignment() {
+		
+		gc.setTitle("Mr.SNOWMAN");
+		gc.setAntiAlias(true);
+		
+		// new colours
+		Color SKYBLUE = new Color (80, 170, 248);
+		Color BROWN = new Color (185, 122, 87);
+		Color GREEN = new Color (34, 177, 76);
+		Color TreeGreen = new Color(34, 177, 76, 115);
+		
+		// new font
+		Font myFont = new Font("Informal Roman", Font.PLAIN, 48);
+		
+		// set background
+		gc.setBackgroundColor(SKYBLUE);
+		gc.clear();
+		
+		// create triangle for nose 
+		Polygon nose = new Polygon();
+		nose.addPoint(550, 280);
+		nose.addPoint(550, 290);
+		nose.addPoint(480, 280);
+		
+		// create triangles for the tree
+		Polygon botTree = new Polygon();
+		botTree.addPoint(750, 470);
+		botTree.addPoint(880, 470);
+		botTree.addPoint(815, 340);
+		Polygon midTree = new Polygon();
+		midTree.addPoint(750, 420);
+		midTree.addPoint(880, 420);
+		midTree.addPoint(815, 300);
+		Polygon topTree = new Polygon();
+		topTree.addPoint(750, 370);
+		topTree.addPoint(880, 370);
+		topTree.addPoint(815, 260);
+		
+		// the snow in the background
+		gc.setColor(Color.WHITE);
+		gc.fillOval(10, 10, 8, 8);
+		gc.fillOval(43, 25, 8, 8);
+		gc.fillOval(651, 73, 8, 8);
+		gc.fillOval(78, 10, 8, 8);
+		gc.fillOval(160, 120, 8, 8);
+		gc.fillOval(106, 108, 8, 8);
+		gc.fillOval(110, 130, 8, 8);
+		gc.fillOval(160, 10, 8, 8);
+		gc.fillOval(210, 510, 8, 8);
+		gc.fillOval(210, 140, 8, 8);
+		gc.fillOval(310, 510, 8, 8);
+		gc.fillOval(410, 210, 8, 8);
+		gc.fillOval(510, 230, 8, 8);
+		gc.fillOval(610, 310, 8, 8);
+		gc.fillOval(710, 330, 8, 8);
+		gc.fillOval(810, 350, 8, 8);
+		gc.fillOval(910, 370, 8, 8);
+		gc.fillOval(310, 110, 8, 8);
+		gc.fillOval(410, 160, 8, 8);
+		gc.fillOval(360, 190, 8, 8);
+		gc.fillOval(709, 50, 8, 8);
+		gc.fillOval(670, 30, 8, 8);
+		gc.fillOval(550, 20, 8, 8);
+		gc.fillOval(440, 35, 8, 8);
+		gc.fillOval(210, 23, 8, 8);
+		gc.fillOval(320, 19, 8, 8);
+		gc.fillOval(20, 100, 8, 8);
+		gc.fillOval(33, 420, 8, 8);
+		gc.fillOval(23, 330, 8, 8);
+		gc.fillOval(26, 350, 8, 8);
+		gc.fillOval(41, 260, 8, 8);
+		gc.fillOval(21, 150, 8, 8);
+		gc.fillOval(240, 250, 8, 8);
+		gc.fillOval(400, 500, 8, 8);
+		gc.fillOval(390, 370, 8, 8);
+		gc.fillOval(200, 325, 8, 8);
+		gc.fillOval(300, 412, 8, 8);
+		gc.fillOval(280, 276, 8, 8);
+		gc.fillOval(740, 416, 8, 8);
+		gc.fillOval(870, 616, 8, 8);
+		gc.fillOval(790, 200, 8, 8);
+		gc.fillOval(700, 180, 8, 8);
+		gc.fillOval(730, 250, 8, 8);
+		gc.fillOval(850, 223, 8, 8);
+		gc.fillOval(950, 200, 8, 8);
+		gc.fillOval(956, 120, 8, 8);
+		gc.fillOval(980, 90, 8, 8);
+		
+		// the ground
+		gc.setColor(BROWN);
+		gc.fillRect(0, 600, 1000, 100);
+		gc.setColor(GREEN);
+		gc.fillRect(0, 580, 1000, 30);
+		gc.setColor(Color.WHITE);
+		gc.fillRect(0, 570, 1000, 10);
+		
+		// the snowman's body
+		gc.setColor(Color.WHITE);
+		gc.fillOval(460, 400, 180, 180);
+		gc.fillOval(485, 300, 130, 130);
+		gc.fillOval(500, 220, 100, 100);
+		
+		// the snowman's arms
+		gc.setColor(BROWN);
+		gc.setStroke(8);
+		gc.drawLine(450, 300, 485, 360);
+		gc.drawLine(680, 330, 615, 360);
+		gc.setStroke(3);
+		gc.drawLine(450, 300, 455, 280);// left fingers
+		gc.drawLine(450, 300, 440, 285);
+		gc.drawLine(450, 300, 430, 295);
+		gc.drawLine(680, 330, 685, 310);// right finger
+		gc.drawLine(680, 330, 700, 320);
+		gc.drawLine(680, 330, 700, 340);
+		
+		// the snowman's eyes
+		gc.setColor(Color.BLACK);
+		gc.drawOval(520, 250, 15, 15);
+		gc.setColor(Color.BLACK);
+		gc.drawOval(560, 250, 15, 15);
+		
+		// the snowman's nose
+		gc.setColor(Color.ORANGE);
+		gc.setStroke(4);
+		gc.drawPolygon(nose);
+		
+		// top hat
+		gc.setColor(Color.BLACK);
+		gc.setStroke(3);
+		gc.drawRect(500, 210, 100, 10);
+		gc.setStroke(3);
+		gc.drawRect(520, 168, 60, 40);
+		
+		// the TREE
+		gc.setColor(BROWN);
+		gc.fillRect(795, 470, 40, 100);
+		gc.setColor(TreeGreen);
+		gc.fillPolygon(botTree);
+		gc.fillPolygon(midTree);
+		gc.fillPolygon(topTree);
+		
+		// clouds
+		gc.setColor(Color.WHITE);
+		gc.fillOval(130, 40, 110, 70); //cloud 1
+		gc.fillOval(180, 20, 90, 65);
+		gc.fillOval(460, 50, 110, 75);// cloud 2
+		gc.fillOval(410, 70, 110, 70);
+		gc.fillOval(480, 70, 115, 68);
+		gc.fillOval(710, 70, 115, 78);// cloud 3
+		gc.fillOval(750, 80, 115, 68);
+		gc.fillOval(750, 30, 115, 90);
+		gc.fillOval(800, 63, 115, 78);
+		
+		// text
+		gc.setFont(myFont);
+		gc.drawString("Mr. SnowMan", 50, 250);
+		gc.setFont(new Font("Bahnschrift", Font.ITALIC, 18));
+		gc.drawString("By Isaac Tran", 50, 300);
+		}
+}
